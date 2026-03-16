@@ -1,1 +1,2 @@
-logs/**
+logs/*
+scripts/python/*.sh
