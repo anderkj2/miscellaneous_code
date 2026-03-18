@@ -47,7 +47,8 @@ parser = argparse.ArgumentParser(description="test_CellDIVE_image_DAPI_filtering
 parser.add_argument("sample", help="Sample ID to be used as prefix for output files")
 parser.add_argument("run", help="CellDIVE run ID, used as a prefix for some input files")
 parser.add_argument("indir", help="Directory containing metadata and raw image files for CellDIVE run '/')")
-parser.add_argument("-p", "--pixel_size", type=float, action="store", help="Image physical pixel size (in um)")
+parser.add_argument("omedir", help="Directory containing formatted image data (should include trailing '/')")
+parser.add_argument("metadir", help="Directory containing sample metadata (should include trailing '/')")
 parser.add_argument("outdir", help="Output directory (should include trailing '/')")
 
 args = vars(parser.parse_args())
@@ -60,11 +61,10 @@ args = vars(parser.parse_args())
 sample = args["sample"]
 run = args["run"]
 indir = args["indir"]
-pixel_size = args["pixel_size"]
+omedir = args["omedir"]
+metadir = args["metadir"]
 outdir = args["outdir"]
 
-# Set directory for formatted data
-omedir = '/projects/varn-lab/PvR_TME/formatted_data/' + sample + '/'
 
 # Create directory for downstream analysis if it doesn't exist
 if not os.path.exists(outdir):
@@ -82,7 +82,7 @@ with open(metadata_file, "r") as file:
 CellDIVE_panel = metadata['panel_id']
 
 # Load formatted OME-TIFF 
-ome_img = tifffile.imread(omedir + 'CellDIVE_panel_' + str(CellDIVE_panel) + '_all_cycles_aligned-FOV-corrected-' + sample + '.ome.tif')
+ome_img = tifffile.imread(omedir + 'CellDIVE_panel_' + str(CellDIVE_panel) + '_all_cycles_aligned-' + sample + '.ome.tif')
 
 print('Image size: ' + str(ome_img.shape))
 print('')
@@ -91,10 +91,10 @@ print('')
 tissue_meta = pd.read_csv(omedir + sample + '_tissue_annotations.txt', sep='\t')
 
 # Load QuPath-generated measurements for detected cells
-cell_meta = pd.read_csv(omedir + sample + '_FOV-corrected_cell_detections.txt', sep='\t')
+cell_meta = pd.read_csv(omedir + sample + '_cell_detections.txt', sep='\t')
 
 # Load metadata table containing clinical timepoint info
-clinical_meta = pd.read_csv('/projects/varn-lab/PvR_TME/metadata/CellDIVE_sample_clinical_metadata-formatted.txt', sep='\t')
+clinical_meta = pd.read_csv(metadir + 'CellDIVE_sample_clinical_metadata-formatted.txt', sep='\t')
 
 # Load sorted image channel info
 img_info = pd.read_csv(omedir + sample + '_sorted_image_channel_info.csv', index_col=0)
