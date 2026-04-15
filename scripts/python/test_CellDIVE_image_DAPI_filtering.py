@@ -46,7 +46,7 @@ parser = argparse.ArgumentParser(description="test_CellDIVE_image_DAPI_filtering
                                  formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument("sample", help="Sample ID to be used as prefix for output files")
 parser.add_argument("run", help="CellDIVE run ID, used as a prefix for some input files")
-parser.add_argument("indir", help="Directory containing metadata and raw image files for CellDIVE run '/')")
+parser.add_argument("indir", help="Directory containing metadata and raw image files for CellDIVE run (should include trailing '/')")
 parser.add_argument("omedir", help="Directory containing formatted image data (should include trailing '/')")
 parser.add_argument("metadir", help="Directory containing sample metadata (should include trailing '/')")
 parser.add_argument("outdir", help="Output directory (should include trailing '/')")
