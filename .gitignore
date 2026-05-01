@@ -1,2 +1,5 @@
 logs/*
-scripts/python/*.sh
+formatted_data/*
+metadata/*
+results/*
+

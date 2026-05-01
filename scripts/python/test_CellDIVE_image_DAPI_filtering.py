@@ -82,16 +82,16 @@ with open(metadata_file, "r") as file:
 CellDIVE_panel = metadata['panel_id']
 
 # Load formatted OME-TIFF 
-ome_img = tifffile.imread(omedir + 'CellDIVE_panel_' + str(CellDIVE_panel) + '_all_cycles_aligned-' + sample + '.ome.tif')
+ome_img = tifffile.imread(omedir + 'CellDIVE_panel_' + str(CellDIVE_panel) + '_all_cycles_aligned-FOV-corrected-' + sample + '.ome.tif')
 
 print('Image size: ' + str(ome_img.shape))
 print('')
 
 # Load QuPath-generated measurements for annotated tissue regions
-tissue_meta = pd.read_csv(omedir + sample + '_tissue_annotations.txt', sep='\t')
+#tissue_meta = pd.read_csv(omedir + sample + '_tissue_annotations.txt', sep='\t')
 
 # Load QuPath-generated measurements for detected cells
-cell_meta = pd.read_csv(omedir + sample + '_cell_detections.txt', sep='\t')
+cell_meta = pd.read_csv(omedir + sample + '_FOV-corrected_cell_detections.txt', sep='\t')
 
 # Load metadata table containing clinical timepoint info
 clinical_meta = pd.read_csv(metadir + 'CellDIVE_sample_clinical_metadata-formatted.txt', sep='\t')
