@@ -1,5 +1,5 @@
 logs/*
-formatted_data/*
+formatted_data
 metadata/*
 results/*
 scripts/python/__pycache__
