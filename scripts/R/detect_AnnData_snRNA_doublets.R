@@ -1,3 +1,5 @@
+# Date created: 6/15/24
+# Date last modified (for public viewing): 5/1/26
 # detect_AnnData_snRNA_doublets.R - Converts an AnnData object containing raw counts 
 # with normalized cluster classifications and Scrublet-identified doublets in metadata 
 # to Seurat format and performs doublet detection using scDblFinder

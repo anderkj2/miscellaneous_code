@@ -1,4 +1,6 @@
 '''
+Date created: 1/22/26
+Date last modified (for public viewing): 5/1/26
 test_CellDIVE_image_DAPI_filtering.py
 Takes pyramidal OME-TIFF and QuPath measurements as input; 
 runs QC checks for DAPI cycles, and performs filtering based on DAPI and 
