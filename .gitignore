@@ -2,4 +2,4 @@ logs/*
 formatted_data/*
 metadata/*
 results/*
-
+scripts/python/__pycache__

@@ -1,0 +1,1 @@
+> Note: `array_submit-[SCRIPT]` runs a job array for `run-[SCRIPT]`, which loads a tab-delimited sample table, and imports sample IDs and relevant parameters from a given row to define the inputs for each instance of `[SCRIPT]` 
